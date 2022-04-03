@@ -10,7 +10,7 @@ app.get('/', async(req, res) => {
 
 app.get('/home', async(req, res) => {
 	res.json({
-		"Hello": "World"
+		"Helo": "World"
 	})
 })
 
