@@ -16,9 +16,11 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
+    name: Auth
+    uses: google-github-actions/auth@v0
+    with: 
+      service_account: ${{secrets.SECRET_GCP_CREDS}}
+
     name: Google App Engine Deployment
-    runs-on: ubuntu-latest
     steps:
-      - uses: google-github-actions/deploy-appengine@v0.8.0
-        with:
-          credentials: ${{secrets.SECRET_GCP_CREDS}}
+      - uses: google-github-actions/deploy-appengine@main
