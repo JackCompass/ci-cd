@@ -15,12 +15,11 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  runs-on: ubuntu-latest
-  setps:
-    - id: 'auth'
-      uses: 'google-github-actions/auth@v0'
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: google-github-actions/deploy-appengine@main
       with:
-        service_account: ${{secrets.SECRET_GCP_CREDS}}
+        credentials: ${{ secrets.SECRET_GCP_CREDS }}
 
-    - id: 'deploy'
-      uses: 'google-github-actions/deploy-appengine@v0'
